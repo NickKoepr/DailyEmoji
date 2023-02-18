@@ -37,7 +37,7 @@ func main() {
 		}
 	})
 
-	if err := http.ListenAndServe("localhost:8080", nil); err != nil {
+	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 		return
 	}
