@@ -52,7 +52,7 @@ func StartEmojiGenerator() {
 		ShuffleEmojiList()
 	}
 
-	err := setEmoji(currentDay.Day())
+	err := setEmoji(currentDay.YearDay())
 	if err != nil {
 		log.Println("Error while setting emoji:", err)
 	}
