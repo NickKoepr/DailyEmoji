@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DailyEmoji</title>
+
+    <style>
+        .title p {
+            font-size: 60px;
+            color: grey;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .descriptiontitle p {
+            font-size: 25px;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .description p {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .credits p {
+            font-size: 18px;
+            color: grey;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .credits a {
+            text-decoration: none;
+        }
+
+        .timezone p {
+            font-size: 18px;
+            color: darkgray;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="title"><p>About</p></div>
+<div class="descriptiontitle">
+    <p>🦆 Get every day a new emoji! 🦖</p>
+</div>
+<div class="description">
+    <p>DailyEmoji is a simple site that displays a random emoji every day based on a list of emojis.</p>
+</div>
+<div class="credits">
+    <a href="https://nickkoepr.nl/" target="_blank"><p>Made with ❤️ by NickKoepr</p></a>
+    <a href="https://" target="_blank"><p>More information? Go to the projects GitHub page</p></a>
+</div>
+
+<div class="timezone">
+    <p><i>Server timezone: {{ . }}</i></p>
+</div>
+</body>
+</html>
