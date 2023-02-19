@@ -30,6 +30,10 @@ func main() {
 	})
 
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
+		if request.URL.Path != "/" {
+			http.NotFound(writer, request)
+			return
+		}
 		err = indexTmpl.Execute(writer, emoji.GetCurrentEmoji())
 		if err != nil {
 			log.Println("Error while loading index.html:", err)
