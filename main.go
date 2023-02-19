@@ -11,7 +11,6 @@ import (
 func main() {
 
 	emoji.ShuffleEmojiList()
-	go emoji.StartEmojiGenerator()
 	indexTmpl, err := template.ParseFiles("site/templates/index.html")
 	if err != nil {
 		log.Fatal(err)

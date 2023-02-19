@@ -1,7 +1,6 @@
 package emoji
 
 import (
-	"errors"
 	"log"
 	"math/rand"
 	"strings"
@@ -15,22 +14,16 @@ var emojis = "😀 😃 😄 😁 😆 😅 😂 🤣 🥲 \U0001F979 ☺️ �
 
 var emojiList = strings.Split(emojis, " ")
 
-var currentEmoji string
-
 // You can set a custom seed here. The program will shuffle the emojiList based on this list. This means that, if the
 // program restarts, the random list will be the same.
 var seed = int64(000000000)
 
-func setEmoji(num int) error {
-	if num > len(emojiList) {
-		return errors.New("num is longer than emoji list")
-	}
-	currentEmoji = emojiList[num]
-	return nil
-}
-
 func GetCurrentEmoji() *string {
-	return &currentEmoji
+	currentDay := time.Now()
+	if currentDay.Day() == 1 && currentDay.Month() == 1 {
+		ShuffleEmojiList()
+	}
+	return &emojiList[time.Now().YearDay()]
 }
 
 func ShuffleEmojiList() {
@@ -44,25 +37,4 @@ func ShuffleEmojiList() {
 	})
 
 	log.Println("Emoji list shuffled!")
-}
-
-func StartEmojiGenerator() {
-	currentDay := time.Now()
-	if currentDay.Day() == 1 && currentDay.Month() == 1 {
-		ShuffleEmojiList()
-	}
-
-	err := setEmoji(currentDay.YearDay())
-	if err != nil {
-		log.Println("Error while setting emoji:", err)
-	}
-	log.Println("Emoji changed to " + currentEmoji + "!")
-
-	nextDay := currentDay.AddDate(0, 0, 1)
-	nextDayDate := time.Date(nextDay.Year(), nextDay.Month(), nextDay.Day(), 0, 0, 0, 0, time.Local)
-
-	diff := time.Duration(nextDay.Unix() - nextDayDate.Unix())
-
-	time.Sleep(diff * time.Second)
-	StartEmojiGenerator()
 }
