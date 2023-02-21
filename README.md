@@ -8,6 +8,7 @@
 The app has some endpoints:
 * ``/``: The homepage with the emoji of the day!
 * ``/about``: Page with some information about the project.
+* ``/api/emoji``: Get the current emoji in JSON format.
 
 #### Selecting emojis
 * 🎲 The website selects every day a random emoji from the given emoji list (see emoji/emoji.go for this list).

@@ -2,6 +2,7 @@ package main
 
 import (
 	"DailyEmoji/emoji"
+	"encoding/json"
 	"html/template"
 	"log"
 	"net/http"
@@ -21,6 +22,14 @@ func main() {
 	}
 
 	timeZone, _ := time.Now().Zone()
+
+	http.HandleFunc("/api/emoji", func(writer http.ResponseWriter, request *http.Request) {
+		err := json.NewEncoder(writer).Encode(map[string]string{"emoji": *emoji.GetCurrentEmoji()})
+		if err != nil {
+			log.Println("Error while loading /api/emoji", err)
+			return
+		}
+	})
 
 	http.HandleFunc("/about", func(writer http.ResponseWriter, request *http.Request) {
 		err = aboutTmpl.Execute(writer, timeZone)
