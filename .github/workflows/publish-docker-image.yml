@@ -20,4 +20,4 @@ jobs:
       run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/dailyemoji:${{github.event.release.tag_name}}
       
     - name: Upload Docker image
-      run: docker push ${{secrets.DOCKER_USER}}/dailyemoji
+      run: docker push ${{secrets.DOCKER_USER}}/dailyemoji:${{github.event.release.tag_name}}
