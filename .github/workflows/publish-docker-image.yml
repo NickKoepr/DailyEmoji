@@ -1,0 +1,23 @@
+name: Publish Docker Image
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/dailyemoji:${{github.event.release.tag_name}}
+      
+    - name: Upload Docker image
+      run: docker push ${{secrets.DOCKER_USER}}/dailyemoji
