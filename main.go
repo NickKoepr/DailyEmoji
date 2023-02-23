@@ -6,10 +6,23 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 	"time"
 )
 
 func main() {
+	args := os.Args[1:]
+	if len(args) > 0 {
+		seed, err := strconv.ParseInt(args[0], 10, 64)
+		if err != nil {
+			log.Fatal("Given argument is not a int64 number")
+			return
+		}
+		emoji.SetSeed(seed)
+	} else {
+		log.Println("Seed not given. Using standard seed.")
+	}
 
 	emoji.ShuffleEmojiList()
 	indexTmpl, err := template.ParseFiles("site/templates/index.html")

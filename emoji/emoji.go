@@ -18,6 +18,10 @@ var emojiList = strings.Split(emojis, " ")
 // program restarts, the random list will be the same.
 var seed = int64(000000000)
 
+func SetSeed(s int64) {
+	seed = s
+}
+
 func GetCurrentEmoji() *string {
 	currentDay := time.Now()
 	if currentDay.Day() == 1 && currentDay.Month() == 1 {

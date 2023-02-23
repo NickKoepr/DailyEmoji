@@ -8,4 +8,4 @@ RUN go build -o /dailyemoji
 
 EXPOSE 8080
 
-CMD ["/dailyemoji"]
+ENTRYPOINT ["/dailyemoji"]
