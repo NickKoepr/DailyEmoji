@@ -21,3 +21,6 @@ jobs:
       
     - name: Upload Docker image
       run: docker push --all-tags ${{secrets.DOCKER_USER}}/dailyemoji
+      
+    - name: Docker logout
+      run: docker logout
